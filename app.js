@@ -1,8 +1,8 @@
-let express = require("express");
-let favicon = require("serve-favicon");
-let morgan = require("morgan");
-let bodyParser = require("body-parser");
-let sequelize = require("./src/db/sequelize");
+const express = require("express");
+const favicon = require("serve-favicon");
+const morgan = require("morgan");
+const bodyParser = require("body-parser");
+const sequelize = require("./src/db/sequelize");
 
 let app = express();
 const port = 8080;
@@ -15,9 +15,20 @@ app
 sequelize.initDb();
 
 // Routes
+
+// let findAllPokemons = require("./src/routes/findAllPokemons");
+// findAllPokemons(app);
 require("./src/routes/findAllPokemons")(app);
-//Pk -> primary key
-require("./src/routes/findPokemonsByPk")(app);
+require("./src/routes/findPokemonsByPk")(app); //Pk -> primary key
+require("./src/routes/createPokemon")(app);
+require("./src/routes/updatePokemon")(app);
+require("./src/routes/deletePokemon")(app);
+
+// error 404
+app.use(({ res }) => {
+  let message = "Impossible de trouver la ressource demandée !";
+  res.status(404).json({ message });
+});
 
 app.listen(port, () => {
   console.log(`Appli démarrée sur localhost:${port}`);
