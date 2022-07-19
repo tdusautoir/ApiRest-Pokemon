@@ -16,6 +16,8 @@ sequelize.initDb();
 
 // Routes
 require("./src/routes/findAllPokemons")(app);
+//Pk -> primary key
+require("./src/routes/findPokemonsByPk")(app);
 
 app.listen(port, () => {
   console.log(`Appli démarrée sur localhost:${port}`);
