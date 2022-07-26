@@ -23,6 +23,7 @@ require("./src/routes/findPokemonsByPk")(app); //Pk -> primary key
 require("./src/routes/createPokemon")(app);
 require("./src/routes/updatePokemon")(app);
 require("./src/routes/deletePokemon")(app);
+require("./src/routes/login")(app);
 
 // error 404
 app.use(({ res }) => {

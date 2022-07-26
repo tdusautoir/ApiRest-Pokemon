@@ -7,7 +7,7 @@ module.exports = (app) => {
       let req_name = req.query.name;
       let req_limit = parseInt(req.query.limit) || 5;
 
-      if (req_name.length > 2) {
+      if (req_name.length < 2) {
         let message = "Votre recherche doit au moins contenir 2 caractères";
         return res.status(400).json({ message });
       }
