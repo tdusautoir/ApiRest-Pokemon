@@ -1,6 +1,5 @@
 const express = require("express");
 const favicon = require("serve-favicon");
-const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const sequelize = require("./src/db/sequelize");
 
