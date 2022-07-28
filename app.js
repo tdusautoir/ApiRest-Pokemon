@@ -5,16 +5,17 @@ const bodyParser = require("body-parser");
 const sequelize = require("./src/db/sequelize");
 
 let app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
-app
-  .use(favicon(__dirname + "/favicon.ico"))
-  .use(morgan("dev"))
-  .use(bodyParser.json());
+app.use(favicon(__dirname + "/favicon.ico")).use(bodyParser.json());
 
 sequelize.initDb();
 
 // Routes
+
+app.get("/", (req, res) => {
+  res.json("Hello, Heroku !");
+});
 
 // let findAllPokemons = require("./src/routes/findAllPokemons");
 // findAllPokemons(app);
