@@ -2,18 +2,22 @@ const express = require("express");
 const favicon = require("serve-favicon");
 const bodyParser = require("body-parser");
 const sequelize = require("./src/db/sequelize");
+const cors = require("cors");
 
 let app = express();
 const port = process.env.PORT || 8080;
 
-app.use(favicon(__dirname + "/favicon.ico")).use(bodyParser.json());
+app
+  .use(favicon(__dirname + "/favicon.ico"))
+  .use(bodyParser.json())
+  .use(cors());
 
 sequelize.initDb();
 
 // Routes
 
 app.get("/", (req, res) => {
-  res.json("Hello, Heroku !");
+  res.json("Pokedex !");
 });
 
 // let findAllPokemons = require("./src/routes/findAllPokemons");
